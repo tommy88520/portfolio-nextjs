@@ -1,0 +1,12 @@
+{
+  "description": "i18n News Reader",
+  "active_locale": "English",
+  "button_label": "Read More",
+  "menu": [
+    {
+      "navigation": "work",
+      "link": "work"
+    },
+    { "navigation": "contact", "link": "contact" }
+  ]
+}

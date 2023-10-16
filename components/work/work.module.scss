@@ -1,0 +1,163 @@
+.work-container {
+  display: flex;
+  justify-content: space-between;
+  width: 940px;
+  margin-bottom: 130px;
+
+  &__asc {
+    order: -1;
+  }
+  &:nth-child(3) {
+    .work-container__asc {
+      order: 1;
+    }
+  }
+  &__detail,
+  &__image {
+    width: 400px;
+
+    img {
+      width: 520px;
+      position: absolute;
+    }
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #080809;
+  }
+
+  &__detail-title {
+    font-size: 2.2em;
+    margin: 10px 0 20px;
+  }
+
+  &__image-bg {
+    width: 400px;
+    height: 400px;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  &__uni-img {
+    z-index: 10;
+  }
+
+  &__tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 6px;
+  }
+
+  @media (max-width: 1280px) {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+
+    &:nth-child(3) {
+      .work-container__asc {
+        order: -1;
+      }
+    }
+
+    &__detail,
+    &__image {
+      width: 90%;
+      // height: 345px;
+      img {
+        right: -80px;
+      }
+    }
+
+    &__asc {
+      img {
+        scale: 0.8;
+        right: 0;
+      }
+    }
+
+    &__image-bg {
+      width: 100%;
+    }
+
+    &__uni-img {
+      top: -63px;
+      right: -102px !important;
+      scale: 1 !important;
+    }
+
+    &__image-bg {
+      height: 350px;
+    }
+
+    &__image0 {
+      img {
+        scale: 0.8 !important;
+        top: -61px;
+        right: -95px;
+      }
+    }
+
+    &__image1 {
+      img {
+        top: -1px;
+        right: 200px;
+        scale: 1 !important;
+      }
+    }
+
+    &__image2 {
+      img {
+        top: -18px;
+        right: -102px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__asc {
+      img {
+        right: 0;
+      }
+    }
+
+    &__uni-img {
+      top: -108px;
+      right: -150px !important;
+      scale: 0.7 !important;
+    }
+
+    &__image-bg {
+      height: 250px;
+    }
+
+    &__image0 {
+      img {
+        scale: 0.7 !important;
+        top: -94px;
+        right: -129px;
+      }
+    }
+
+    &__image1 {
+      img {
+        top: -100px;
+        right: -149px;
+        scale: 0.7 !important;
+      }
+    }
+
+    &__image2 {
+      img {
+        top: -75px;
+        scale: 0.8 !important;
+        right: -134px;
+      }
+    }
+  }
+}
