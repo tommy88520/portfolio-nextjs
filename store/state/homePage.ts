@@ -20,8 +20,3 @@ export interface irootUrl {
   rootUrlState: boolean;
   toggleRootUrl: (e) => void;
 }
-
-export interface iAllState {
-  lang: string;
-  setLang: (e) => void;
-}

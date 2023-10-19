@@ -2,27 +2,9 @@ import { create } from 'zustand';
 import { userRequest } from '~/utils/axios';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 import { iWorkPage } from './state/workPage';
-import { iSkillsPage, iWorks, irootUrl, iAllState } from './state/homePage';
+import { iSkillsPage, iWorks, irootUrl } from './state/homePage';
 
 // import Swal from 'sweetalert2/dist/sweetalert2.js';
-
-// const menuStore = create<iMenu[]>()(
-//   devtools(
-//     persist((set) => ({
-//       menu: '',
-//     })),
-//   ),
-// );
-
-const allStore = create<iAllState>()(
-  devtools((set, get) => ({
-    lang: 'en',
-    setLang: (query) => {
-      set((state) => ({ lang: (state.lang = query) }));
-      // console.log(123, get().lang);
-    },
-  })),
-);
 
 const worksStore = create<iWorks>()(
   devtools((set) => ({
@@ -134,4 +116,4 @@ const rootUrlStore = create<irootUrl>()(
   })),
 );
 
-export { allStore, skillsStore, worksStore, rootUrlStore, workPageStore };
+export { skillsStore, worksStore, rootUrlStore, workPageStore };

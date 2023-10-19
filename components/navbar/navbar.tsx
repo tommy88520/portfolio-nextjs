@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { worksStore, rootUrlStore, allStore } from '~/store/index';
+import { worksStore, rootUrlStore } from '~/store/index';
 import BackButton from '~/components/backButton/backButton';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import classes from './navbar.module.scss';
