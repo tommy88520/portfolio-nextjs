@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.4...v0.1.5) (2023-10-19)
+
+
+### Bug Fixes
+
+* remove data fetch in useeffect and add to getserversideprops ([c620a88](https://github.com/tommy88520/portfolio-nextjs/commit/c620a8826261ae75469ad5d63d2129bacc89f705))
+
 ### [0.1.4](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.3...v0.1.4) (2023-10-19)
 
 
