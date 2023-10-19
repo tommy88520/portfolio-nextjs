@@ -1,11 +1,4 @@
 {
-  "menu": [
-    {
-      "navigation": "work",
-      "link": "work"
-    },
-    { "navigation": "contact", "link": "contact" }
-  ],
   "introduce": {
     "title": "注重良好 Coding 品質、開發可擴充性的的APIs",
     "detail":

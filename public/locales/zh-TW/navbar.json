@@ -1,0 +1,10 @@
+{
+  "menu": [
+    {
+      "navigation": "工作項目",
+      "link": "work"
+    },
+    { "navigation": "聯絡方式", "link": "contact" }
+  ],
+  "change-locale": "En"
+}

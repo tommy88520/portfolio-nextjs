@@ -1,0 +1,10 @@
+{
+  "menu": [
+    {
+      "navigation": "work",
+      "link": "work"
+    },
+    { "navigation": "contact", "link": "contact" }
+  ],
+  "change-locale": "chinese"
+}

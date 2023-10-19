@@ -10,8 +10,7 @@ const Footer = () => {
   const { rootUrlState } = rootUrlStore((state) => state);
   const footerText = '2023 portfolio - developed by Tommy Huang';
   const bgGradient = ['1', '2', '3'];
-  const { t } = useTranslation();
-
+  const { t, i18n } = useTranslation();
   const touchBox = [
     {
       text: 'calender',
@@ -29,6 +28,7 @@ const Footer = () => {
       link: 'mailto:tommy8852024@gmail.com?subject=Hi, Tommy Huang',
     },
   ];
+
   return rootUrlState ? (
     <footer className={classes['footer-text']}>{footerText}</footer>
   ) : (
@@ -39,8 +39,9 @@ const Footer = () => {
         </div>
 
         <div className={classes['footer-page__box-wrap']}>
-          <h3>{t('contact.title')}</h3>
-          <div className='footer-page__touch-box'>
+          {/* <h3>{t('contact.title')}</h3> */}
+          <h3>{i18n.language.includes('zh') ? '聯絡方式' : 'Let’s Get In Touch'} </h3>
+          <div className={classes['footer-page__touch-box']}>
             {touchBox.map((e, i) => {
               return <TouchBox key={i} info={e} />;
             })}

@@ -1,11 +1,4 @@
 {
-  "menu": [
-    {
-      "navigation": "work",
-      "link": "work"
-    },
-    { "navigation": "contact", "link": "contact" }
-  ],
   "introduce": {
     "title": "Prioritize excellent coding quality and the creation of extensible APIs.",
     "detail":

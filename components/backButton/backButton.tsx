@@ -1,5 +1,5 @@
-// import eftArrow } from '~/IMG/left-arrow.svg';
 import classes from './backButton.module.scss';
+
 const BackButton = ({ rootUrlState, top }) => {
   return (
     <div

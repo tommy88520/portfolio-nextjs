@@ -4,36 +4,26 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { worksStore, rootUrlStore, allStore } from '~/store/index';
 import BackButton from '~/components/backButton/backButton';
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import classes from './navbar.module.scss';
 
 const Navbar = () => {
-  // const { menuState, getMenu } = menuStore((state) => state);
+  const router = useRouter();
   const [menuState, setMenuState] = useState<any>();
-  const { t, i18n } = useTranslation();
-  const location = useRouter();
-  const { getWorks } = worksStore((state) => state);
+  const { t, i18n } = useTranslation('navbar');
   const { rootUrlState, toggleRootUrl } = rootUrlStore((state) => state);
-  const { lang, setLang } = allStore((state) => state);
   useEffect(() => {
     renderNavigation();
-    // getWorks(i18n.language);
     setMenuState(t('menu', { returnObjects: true }));
-  }, [location.pathname]);
+    console.log(i18n.language, t('menu', { returnObjects: true }));
+  }, [router.pathname, i18n.language]);
+
   const renderNavigation = () => {
-    if (location.pathname !== '/') {
+    if (router.pathname !== '/') {
       toggleRootUrl(false);
     } else {
       toggleRootUrl(true);
     }
-  };
-  const changeLang = () => {
-    if (i18n.language == 'zh-TW') {
-      i18n.changeLanguage('en');
-    } else {
-      i18n.changeLanguage('zh-TW');
-    }
-    // getWorks(i18n.language);
   };
 
   const iconLink = [
@@ -62,7 +52,11 @@ const Navbar = () => {
             <p>HYM</p>
           </Link>
         </div>
-        <div className={classes['navigation-bar__show-container']}>
+        <div
+          className={`${classes['navigation-bar__show-container']} ${
+            !rootUrlState && classes['navigation-bar__detail-width']
+          }`}
+        >
           <div
             className={`${classes['navigation-bar__link']} ${
               rootUrlState == false ? 'hide-link' : ''
@@ -73,7 +67,7 @@ const Navbar = () => {
                 return (
                   <a
                     className={`${classes['navigation-bar__link-detail']} ${
-                      i18n.language == 'zh-TW' && classes['navigation-bar__link-margin']
+                      i18n.language.includes('zh') && classes['navigation-bar__link-margin']
                     }`}
                     key={index}
                     href={`#${res.link}`}
@@ -104,13 +98,9 @@ const Navbar = () => {
             })}
           </div>
           <div className={classes['navigation-bar__lang']}>
-            <p
-              className={classes['navigation-bar__lang-text']}
-              onClick={() => changeLang()}
-              aria-hidden='true'
-            >
-              {lang !== 'zh-TW' ? '中文' : 'En'}
-            </p>
+            <Link href={router.asPath} locale={router.locale === 'en' ? 'zh-TW' : 'en'}>
+              <p className={classes['navigation-bar__lang-text']}>{t('change-locale')}</p>
+            </Link>
           </div>
           <BackButton rootUrlState={rootUrlState} top={true} />
         </div>
@@ -118,4 +108,5 @@ const Navbar = () => {
     </Fragment>
   );
 };
+
 export default Navbar;

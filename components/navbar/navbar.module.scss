@@ -6,7 +6,7 @@
   &__show-container {
     display: flex;
     justify-content: space-between;
-    max-width: 321px;
+    width: 321px;
     min-height: 22px;
   }
 
@@ -21,6 +21,8 @@
   .hide-link {
     display: none;
   }
+
+  
 
   &__link-detail {
     text-decoration: none;
@@ -85,6 +87,10 @@
     opacity: 0.5;
     cursor: pointer;
     text-align: center;
+  }
+
+  &__detail-width {
+    width: 120px;
   }
 
   @media (max-width: 576px) {

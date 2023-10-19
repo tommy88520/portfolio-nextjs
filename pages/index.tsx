@@ -6,12 +6,14 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { allStore, worksStore } from '~/store/index';
+import { worksStore } from '~/store/index';
 import MobileBar from '~/components/mobileBar/mobileBar';
 import BackgroundColor from '~/components/backgroundColor/backgroundColor';
-import Work from '~/components/work/work';
+// import Work from '~/components/work/work';
+import WorkSection from '~/components/work/work';
 import dynamic from 'next/dynamic';
 import TouchBox from '~/components/touchBox/touchBox';
+import { navShrink, introItems } from '~/animation/index';
 const Introduce = dynamic(() => import('~/components/introduce/introduce'), {
   ssr: false,
 });
@@ -22,18 +24,28 @@ const inter = Inter({ subsets: ['latin'] });
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home(props) {
-  const { t, i18n } = useTranslation();
-  const { setLang } = allStore((state) => state);
-  useEffect(() => {
-    setLang(i18n.language);
-    // getWorks(i18n.language);
-    // if (worksContent[0].title) {
-    //   navShrink();
-    //   worksAnimation(gsap, ref);
-    //   introItems();
-    // }
-  }, []);
+  const { t, i18n } = useTranslation(['common', 'footer'], { bindI18n: 'languageChanged loaded' });
   const { worksContent, getWorks } = worksStore((state) => state);
+  const bgGradient = ['1', '2', '3'];
+  const workContainer = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const extraIntroRef = useRef<HTMLDivElement>(null);
+  const [introDetailsRef, setIntroDetailsRef] = useIntroDetailsRef();
+
+  function useIntroDetailsRef(): any {
+    const introDetailsRef = useRef<HTMLDivElement[]>([]);
+    introDetailsRef.current = [];
+    return [introDetailsRef, (ref) => ref && introDetailsRef.current.push(ref)];
+  }
+  useEffect(() => {
+    getWorks(i18n.language);
+    if (worksContent[0].title) {
+      navShrink(gsap, workContainer, ref);
+      introItems(gsap, ref, extraIntroRef.current, introDetailsRef.current);
+    }
+    i18n.reloadResources(i18n.resolvedLanguage, ['common', 'footer']);
+  }, [worksContent[0].title]);
+
   const extraWork = [
     {
       id: 1,
@@ -54,6 +66,7 @@ export default function Home(props) {
       link: '其他',
     },
   ];
+
   const touchBox = [
     {
       id: 1,
@@ -74,9 +87,7 @@ export default function Home(props) {
       link: 'mailto:tommy8852024@gmail.com?subject=Hi, Tommy Huang',
     },
   ];
-  const bgGradient = ['1', '2', '3'];
-  const workContainer = useRef<HTMLInputElement>(null);
-  const ref = useRef<HTMLInputElement>(null);
+
   return (
     <div className={classes['home-page']} ref={ref}>
       <div className={classes['home-page__introduce-section']}>
@@ -85,27 +96,31 @@ export default function Home(props) {
       </div>
       <section className={classes['home-page__works-container']} ref={workContainer} id='work'>
         <div className={classes['home-page__title']}>{t('works.title')}</div>
-        {worksContent.map((order, i) => {
-          return <Work key={i} order={order} number={i} />;
-        })}
+        <WorkSection worksContent={worksContent} />
       </section>
-      <section className={classes['home-page__extra-intro']}>
-        {extraWork.map((item: any) => {
-          return (
-            <div className={classes['home-page__intro-item']} key={item.id}>
-              <div className={classes['home-page__intro-title']}>{item.title}</div>
-              <div className={classes['home-page__intro-wrap']}>
-                {item.skills.map((skill, Sindex) => {
-                  return (
-                    <div className={classes['home-page__intro-detail']} key={Sindex}>
-                      {skill}
-                    </div>
-                  );
-                })}
+      <section className={classes['home-page__extra-intro']} ref={extraIntroRef}>
+        {extraWork &&
+          extraWork.map((item: any) => {
+            return (
+              <div className={classes['home-page__intro-item']} key={item.id}>
+                <div className={classes['home-page__intro-title']}>{item.title}</div>
+                <div className={classes['home-page__intro-wrap']}>
+                  {item &&
+                    item.skills.map((skill, Sindex) => {
+                      return (
+                        <div
+                          className={classes['home-page__intro-detail']}
+                          key={Sindex}
+                          ref={setIntroDetailsRef}
+                        >
+                          {skill}
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </section>
       <section className={classes['home-page__contact-page']} id='contact'>
         <div className={classes['home-page__touch-text']}>
@@ -129,7 +144,7 @@ export const getStaticProps = async (context: any) => {
     props: {
       // Spread the returned object into our `props` to expose
       // them to our component during SSR.
-      ...(await serverSideTranslations(locale, ['common', 'footer'])),
+      ...(await serverSideTranslations(locale, ['common', 'navbar'])),
     },
   };
 };
