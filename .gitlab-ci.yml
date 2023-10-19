@@ -80,7 +80,7 @@ stages:
 prod_create:
   extends: .create
   rules:
-    - if: $CI_COMMIT_BRANCH == 'master' && $CI_PROJECT_PATH == 'tommy88520/portfolio-frontend'
+    - if: $CI_COMMIT_BRANCH == 'master' && $CI_PROJECT_PATH == 'tommy88520/profolio-nextjs'
   variables:
     IMAGE_ENDPOINT: ${PROD_IMAGE_ENDPOINT}
     TEMPLATE_NAME: portfolio-frontend-prod-template-${CI_COMMIT_SHORT_SHA}
@@ -89,7 +89,7 @@ prod_create:
 prod_deploy:
   extends: .deploy
   rules:
-    - if: $CI_COMMIT_BRANCH == 'master' && $CI_PROJECT_PATH == 'tommy88520/portfolio-frontend'
+    - if: $CI_COMMIT_BRANCH == 'master' && $CI_PROJECT_PATH == 'tommy88520/profolio-nextjs'
   variables:
     IMAGE_ENDPOINT: ${PROD_IMAGE_ENDPOINT}
     DOCKER_TAG: prod
@@ -99,7 +99,7 @@ prod_deploy:
 prod_clean:
   extends: .clean
   rules:
-    - if: $CI_COMMIT_BRANCH == 'master' && $CI_PROJECT_PATH == 'tommy88520/portfolio-frontend'
+    - if: $CI_COMMIT_BRANCH == 'master' && $CI_PROJECT_PATH == 'tommy88520/profolio-nextjs'
   variables:
     IMAGE_ENDPOINT: ${PROD_IMAGE_ENDPOINT}
     BASE_TEMPLATE: portfolio-frontend-prod-template

@@ -9,14 +9,11 @@ import classes from './navbar.module.scss';
 
 const Navbar = () => {
   const router = useRouter();
-  const [menuState, setMenuState] = useState<any>();
   const { t, i18n } = useTranslation('navbar');
   const { rootUrlState, toggleRootUrl } = rootUrlStore((state) => state);
   useEffect(() => {
     renderNavigation();
-    setMenuState(t('menu', { returnObjects: true }));
-    console.log(i18n.language, t('menu', { returnObjects: true }));
-  }, [router.pathname, i18n.language]);
+  }, [router.pathname]);
 
   const renderNavigation = () => {
     if (router.pathname !== '/') {
@@ -26,6 +23,7 @@ const Navbar = () => {
     }
   };
 
+  const menuState = Object.values(t('menu', { returnObjects: true }));
   const iconLink = [
     {
       title: 'github',

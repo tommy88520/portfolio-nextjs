@@ -13,7 +13,6 @@ export interface iWorks {
     orderNumber: number;
     workImage: string;
   }[];
-
   getWorks: (e) => void;
 }
 

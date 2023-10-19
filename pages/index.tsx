@@ -1,29 +1,27 @@
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { worksStore } from '~/store/index';
 import MobileBar from '~/components/mobileBar/mobileBar';
 import BackgroundColor from '~/components/backgroundColor/backgroundColor';
-// import Work from '~/components/work/work';
 import WorkSection from '~/components/work/work';
 import dynamic from 'next/dynamic';
 import TouchBox from '~/components/touchBox/touchBox';
 import { navShrink, introItems } from '~/animation/index';
+import Spinner from '~/components/spinner/spinner';
+
 const Introduce = dynamic(() => import('~/components/introduce/introduce'), {
   ssr: false,
 });
 
 import classes from './index.module.scss';
 
-const inter = Inter({ subsets: ['latin'] });
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home(props) {
+const Home = () => {
   const { t, i18n } = useTranslation(['common', 'footer'], { bindI18n: 'languageChanged loaded' });
   const { worksContent, getWorks } = worksStore((state) => state);
   const bgGradient = ['1', '2', '3'];
@@ -44,7 +42,7 @@ export default function Home(props) {
       introItems(gsap, ref, extraIntroRef.current, introDetailsRef.current);
     }
     i18n.reloadResources(i18n.resolvedLanguage, ['common', 'footer']);
-  }, [worksContent[0].title]);
+  }, []);
 
   const extraWork = [
     {
@@ -135,6 +133,18 @@ export default function Home(props) {
       </section>
       <MobileBar />
     </div>
+  );
+};
+
+export default function HomePage() {
+  return (
+    <Fragment>
+      <Head>
+        <title>Tommy's Portfolio</title>
+        <meta name='description' content='I post about programming and web development.' />
+      </Head>
+      <Home />
+    </Fragment>
   );
 }
 

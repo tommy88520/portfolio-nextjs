@@ -1,16 +1,16 @@
+import Link from 'next/link';
 import classes from './backButton.module.scss';
 
 const BackButton = ({ rootUrlState, top }) => {
   return (
-    <div
+    <Link
       className={`${classes['back-button']} ${rootUrlState != false ? 'hide-link' : ''} ${
         !top ? classes.hidden : ''
       } `}
-      onClick={() => window.history.back()}
-      aria-hidden='true'
+      href='/'
     >
       <img className={classes['back-button__left-arrow']} src='/images/left-arrow.svg' alt='' />
-    </div>
+    </Link>
   );
 };
 

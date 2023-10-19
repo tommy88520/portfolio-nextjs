@@ -23,7 +23,7 @@ WORKDIR /app
 COPY --from=build /app .
 # 執行應用程序
 
-CMD yarn preview
+CMD yarn start
 # 清理緩存和臨時文件，最小化映像大小
 RUN yarn cache clean \
   && rm -rf /tmp/* /var/cache/apk/* \

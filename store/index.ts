@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { userRequest } from '~/utils/axios';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
-import { iMenu } from './state/navbar';
 import { iWorkPage } from './state/workPage';
 import { iSkillsPage, iWorks, irootUrl, iAllState } from './state/homePage';
 
@@ -16,22 +15,13 @@ import { iSkillsPage, iWorks, irootUrl, iAllState } from './state/homePage';
 // );
 
 const allStore = create<iAllState>()(
-  devtools(
-    // persist(
-    (set, get) => ({
-      lang: 'en',
-      setLang: (query) => {
-        set((state) => ({ lang: (state.lang = query) }));
-        // console.log(123, get().lang);
-      },
-    }),
-    //   {
-    //     name: 'portfolio-lang',
-    //     storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
-    //     skipHydration: true,
-    //   },
-    // ),
-  ),
+  devtools((set, get) => ({
+    lang: 'en',
+    setLang: (query) => {
+      set((state) => ({ lang: (state.lang = query) }));
+      // console.log(123, get().lang);
+    },
+  })),
 );
 
 const worksStore = create<iWorks>()(
@@ -50,23 +40,19 @@ const worksStore = create<iWorks>()(
     ],
     getWorks: async (lang) => {
       const regexZh = /^zh/;
-
       const matchZh = lang.match(regexZh);
       if (matchZh) {
         lang = 'zh-TW';
       } else {
         lang = 'en';
       }
-
       await userRequest
         .post('portfolio/get-work', { lang: lang })
         .then((res) => {
           set(() => ({ worksContent: res.data }));
         })
         .catch((error) => {
-          // console.log(error);
           if (error.response.status == 401) {
-            // Swal.fire('未登入或是登入時效已到期，請重新登入');
             console.log('未登入或是登入時效已到期，請重新登入');
           } else {
             location.href = '/notFound';

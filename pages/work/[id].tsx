@@ -2,15 +2,14 @@ import { useEffect, useState, Fragment, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 import Spinner from '~/components/spinner/spinner';
-// import LazyLoadImg from '~/components/lazyLoadImg/lazyLoadImg';
 import Image from 'next/image';
 import { workPageStore } from '~/store/index';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import classes from './workPage.module.scss';
+import Head from 'next/head';
 
 const WorkPage = () => {
-  // const [repoLoading, setRepoLoading] = useState(true);
   const { t, i18n } = useTranslation();
 
   const location = useRouter();
@@ -18,7 +17,6 @@ const WorkPage = () => {
   const { workPageContent, getWorkPageContent, isWorkPageLoading } = workPageStore(
     (state) => state,
   );
-  // console.log(18, i18n.language);
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -27,12 +25,7 @@ const WorkPage = () => {
     if (location.query) {
       getWorkPageContent({ articleId: location.query.id, lang: i18n.language });
     }
-    // const timer = window.setTimeout(() => {
-    //   setRepoLoading(false);
-    // }, 1000);
-    // return () => window.clearTimeout(timer);
   }, [location.query]);
-  // console.log(workPageContent);
   const WorkPageDetail = () => {
     return (
       <div className={classes['work-page']}>
@@ -64,7 +57,15 @@ const WorkPage = () => {
       </div>
     );
   };
-  return <Fragment>{isWorkPageLoading ? <Spinner /> : <WorkPageDetail />}</Fragment>;
+  return (
+    <Fragment>
+      <Head>
+        <title>Tommy's work</title>
+        <meta name='description' content='' />
+      </Head>
+      {isWorkPageLoading ? <Spinner /> : <WorkPageDetail />}
+    </Fragment>
+  );
 };
 
 export const getServerSideProps = async (context: any) => {

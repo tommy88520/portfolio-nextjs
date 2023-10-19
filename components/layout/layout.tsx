@@ -21,7 +21,7 @@ function Layout(props: any) {
       <Suspense fallback={<Spinner />}>
         <Navbar />
         <main>{props.children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </Suspense>
     </Fragment>
   );
