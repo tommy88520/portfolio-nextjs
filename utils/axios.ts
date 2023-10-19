@@ -1,4 +1,6 @@
 import axios from 'axios';
-export const userRequest = axios.create({
+import { setupCache } from 'axios-cache-interceptor';
+const Axios = axios.create({
   baseURL: process.env.BACKEND_BASE_URL || 'http://localhost:9527/',
 });
+export const userRequest = setupCache(Axios);

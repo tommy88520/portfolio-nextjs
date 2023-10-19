@@ -1,13 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import gsap from 'gsap';
 import { useTranslation } from 'react-i18next';
-import { worksStore } from '~/store/index';
 import Button from '~/components/button/button';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import classes from './introduce.module.scss';
-// import Image from 'next/image';
 import { ReactSVG } from 'react-svg';
 
 interface MagneticButtonProps {
@@ -45,13 +43,11 @@ const MagneticButton: React.FC<MagneticButtonProps> = (prop) => {
       borderRadius,
       background: debug ? 'rgba(0, 125, 255, .4)' : 'transparent',
     });
-    // if ($root.current && rootBound.current !== null && $item.current) {
 
     rootBound.current = $root.current.getBoundingClientRect();
     itemBound.current = $item.current.getBoundingClientRect();
     diffBound.current.x = (rootBound.current.width * scale - rootBound.current.width) / 2;
     diffBound.current.y = (rootBound.current.height * scale - rootBound.current.height) / 2;
-    // }
   };
 
   const handleMouseLeave = () => {
@@ -70,8 +66,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = (prop) => {
   const handleMouseMove = (e) => {
     const x = e.clientX || e.touches[0].clientX;
     const y = e.clientY || e.touches[0].clientY;
-
-    // if (rootBound.current !== null && itemBound.current !== null) {
 
     const maxX = ((rootBound.current.width - itemBound.current.width) / 2) * tollerance;
 
@@ -123,11 +117,7 @@ const MagneticButton: React.FC<MagneticButtonProps> = (prop) => {
 };
 
 const Introduce = () => {
-  const { t, i18n } = useTranslation();
-  const { getWorks } = worksStore((state) => state);
-  useEffect(() => {
-    getWorks(i18n.language);
-  }, []); //
+  const { t } = useTranslation();
 
   const targetDivRef = useRef(null);
   const element = document.getElementById('work');
@@ -181,8 +171,6 @@ const Introduce = () => {
               borderRadius='50%'
               key={e.id}
             >
-              {/* <img src={e.image} alt={e.skill} /> */}
-              {/* <Image src={e.image} alt={e.skill} layout='fill' /> */}
               <ReactSVG src={e.image} alt={e.skill} />
               <p>{e.skill}</p>
             </MagneticButton>
