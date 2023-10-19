@@ -1,0 +1,35 @@
+{
+  "introduce": {
+    "title": "注重良好 Coding 品質、開發可擴充性的的APIs",
+    "detail":
+      "嗨，我來自台北木柵，一個認真的轉職全端工程師，努力完成公司交辦的任務，並適時提出自己的想法，擁有良好的團隊協作能力。",
+    "button": "工作項目",
+    "resume": "下載履歷"
+  },
+  "works": {
+    "title": "工作項目"
+  },
+  "contact": {
+    "title": "聯絡方式",
+    "meeting": "預約時間",
+    "connect": "聯繫我"
+  },
+  "extraWork": {
+    "experience": {
+      "title": "經歷",
+      "content": ["資策會", "PressLogic", "蝙蝠移動"]
+    },
+    "education": {
+      "title": "學歷",
+      "content": ["淡江大學公共行政學士", "政治大學國發所碩士"]
+    },
+    "others": {
+      "title": "其他",
+      "content": ["萬芳高中小論文比賽助教", "伯大尼孤兒院志工"]
+    }
+  },
+  "app_title": "i18n News Reader中文",
+  "active_locale": "English中文",
+  "button_label": "Read More中文",
+  "homepage_nav_link_label": "Go Back中文"
+}

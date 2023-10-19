@@ -1,7 +1,4 @@
 {  
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-  },
   "[html,javascript,json,xml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -19,5 +16,6 @@
   "eslint.validate": ["javascript", "html", "vue", "json", "javascriptreact", "typescript", "typescriptreact"],
   "eslint.options": {
     "extensions": [".html", ".js", ".vue", ".jsx", "json", ".tsx"]
-  }
+  },
+  "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"]
 }

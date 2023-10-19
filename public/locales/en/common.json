@@ -1,0 +1,38 @@
+{
+  "introduce": {
+    "title": "Prioritize excellent coding quality and the creation of extensible APIs.",
+    "detail":
+      "Hello, I hail from Muzha in Taipei. I am a dedicated career-switching full-stack engineer who diligently completes assigned tasks for the company and proactively contributes my ideas. I possess strong teamwork and collaboration skills.",
+    "button": "work",
+    "resume": "Download resume"
+  },
+   "works": {
+    "title": "Selected Works"
+  },
+  "contact": {
+    "title": "Let’s Get In Touch",
+    "meeting": "Plan meeting",
+    "connect": "Connect"
+  },
+  "extraWork": {
+    "experience": {
+      "title": "Work Experience",
+      "content": ["Institute for Information Industry", "PressLogic", "BatMobile"]
+    },
+    "education": {
+      "title": "Education",
+      "content": [
+        "Bachelor of Public Administration at Tamkang University",
+        "Master's Degree in Public Administration from National Chengchi University"
+      ]
+    },
+    "others": {
+      "title": "others",
+      "content": ["Assistant for Essay Competition", "Volunteer at Orphanage"]
+    }
+  },
+  "app_title": "i18n News Reader",
+  "active_locale": "English",
+  "button_label": "Read More",
+  "homepage_nav_link_label": "Go Back"
+}
