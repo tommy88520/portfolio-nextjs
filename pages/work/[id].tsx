@@ -1,30 +1,19 @@
-import { useEffect, useState, Fragment, Suspense } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
-import Spinner from '~/components/spinner/spinner';
 import Image from 'next/image';
-import { workPageStore } from '~/store/index';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
 import classes from './workPage.module.scss';
 import Head from 'next/head';
+import { getWorkPageData } from '~/utils/workData';
 
-const WorkPage = () => {
-  const { t, i18n } = useTranslation();
-
+const WorkPage = ({ workPageContent }) => {
   const location = useRouter();
 
-  const { workPageContent, getWorkPageContent, isWorkPageLoading } = workPageStore(
-    (state) => state,
-  );
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-    if (location.query) {
-      getWorkPageContent({ articleId: location.query.id, lang: i18n.language });
-    }
   }, [location.query]);
   const WorkPageDetail = () => {
     return (
@@ -65,17 +54,36 @@ const WorkPage = () => {
         <title>Tommy's work</title>
         <meta name='description' content='' />
       </Head>
-      {isWorkPageLoading ? <Spinner /> : <WorkPageDetail />}
+      <WorkPageDetail />
     </Fragment>
   );
 };
 
 export const getServerSideProps = async (context: any) => {
-  const { locale } = context;
+  const { locale, params } = context;
+  const { id } = params;
+  const regexZh = /^zh/;
+  const matchZh = locale.match(regexZh);
+
+  let lang;
+  if (matchZh) {
+    lang = 'zh-TW';
+  } else {
+    lang = 'en';
+  }
+  const data = await getWorkPageData({ articleId: id, lang });
+
+  if (!data)
+    return {
+      notFound: true,
+    };
+
   return {
     props: {
+      workPageContent: data,
       ...(await serverSideTranslations(locale, ['navbar'])),
     },
   };
 };
+
 export default WorkPage;

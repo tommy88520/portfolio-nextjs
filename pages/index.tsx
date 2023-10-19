@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { worksStore } from '~/store/index';
 import MobileBar from '~/components/mobileBar/mobileBar';
 import BackgroundColor from '~/components/backgroundColor/backgroundColor';
 import WorkSection from '~/components/work/work';
@@ -12,6 +11,7 @@ import dynamic from 'next/dynamic';
 import TouchBox from '~/components/touchBox/touchBox';
 import { navShrink, introItems } from '~/animation/index';
 import Spinner from '~/components/spinner/spinner';
+import { getWorksData } from '~/utils/workData';
 
 const Introduce = dynamic(() => import('~/components/introduce/introduce'), {
   ssr: false,
@@ -21,9 +21,8 @@ import classes from './index.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Home = () => {
+const Home = ({ worksContent }) => {
   const { t, i18n } = useTranslation(['common', 'footer'], { bindI18n: 'languageChanged loaded' });
-  const { worksContent, getWorks } = worksStore((state) => state);
   const bgGradient = ['1', '2', '3'];
   const workContainer = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -36,11 +35,8 @@ const Home = () => {
     return [introDetailsRef, (ref) => ref && introDetailsRef.current.push(ref)];
   }
   useEffect(() => {
-    getWorks(i18n.language);
-    if (worksContent[0].title) {
-      navShrink(gsap, workContainer, ref);
-      introItems(gsap, ref, extraIntroRef.current, introDetailsRef.current);
-    }
+    navShrink(gsap, workContainer, ref);
+    introItems(gsap, ref, extraIntroRef.current, introDetailsRef.current);
     i18n.reloadResources(i18n.resolvedLanguage, ['common', 'footer']);
   }, []);
 
@@ -136,24 +132,29 @@ const Home = () => {
   );
 };
 
-export default function HomePage() {
+export default function HomePage({ worksContent }) {
   return (
     <Fragment>
       <Head>
         <title>Tommy's Portfolio</title>
         <meta name='description' content='I post about programming and web development.' />
       </Head>
-      <Home />
+      <Home worksContent={worksContent} />
     </Fragment>
   );
 }
 
 export const getStaticProps = async (context: any) => {
   const { locale } = context;
+  const worksContent = await getWorksData(locale);
+  if (!worksContent)
+    return {
+      notFound: true,
+    };
   return {
     props: {
-      // Spread the returned object into our `props` to expose
-      // them to our component during SSR.
+      worksContent,
+
       ...(await serverSideTranslations(locale, ['common', 'navbar'])),
     },
   };

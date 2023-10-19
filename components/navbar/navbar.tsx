@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { worksStore, rootUrlStore } from '~/store/index';
+import { rootUrlStore } from '~/store/index';
 import BackButton from '~/components/backButton/backButton';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import classes from './navbar.module.scss';
@@ -50,11 +50,7 @@ const Navbar = () => {
             <p>HYM</p>
           </Link>
         </div>
-        <div
-          className={`${classes['navigation-bar__show-container']} ${
-            !rootUrlState && classes['navigation-bar__detail-width']
-          }`}
-        >
+        <div className={classes['navigation-bar__show-container']}>
           <div
             className={`${classes['navigation-bar__link']} ${
               rootUrlState == false ? 'hide-link' : ''
