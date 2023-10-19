@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.3...v0.1.4) (2023-10-19)
+
+
+### Bug Fixes
+
+* clean code and hot fix img in mobile ([cb0f7b0](https://github.com/tommy88520/portfolio-nextjs/commit/cb0f7b083d0f4169aa14c0ab37d22168aeec1ebe))
+
 ### [0.1.3](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.2...v0.1.3) (2023-10-19)
 
 
