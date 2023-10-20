@@ -89,6 +89,7 @@ const WorkSection: React.FC<WorkSectionProps> = ({ worksContent }) => {
                   src={workImage}
                   alt='icon'
                   className={classes['work-container__image-detail']}
+                  layout='responsive'
                   ref={setImgsRef}
                   width='520'
                   height='520'
