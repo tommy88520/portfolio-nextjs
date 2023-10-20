@@ -13,10 +13,6 @@ export const getWorksData = async (lang) => {
     .then((res) => res.data)
     .catch((error) => {
       console.log(error);
-
-      if (error.response.status == 401) {
-        console.log('未登入或是登入時效已到期，請重新登入');
-      }
     });
 };
 
@@ -26,8 +22,5 @@ export const getWorkPageData = async (e) => {
     .then((res) => res.data)
     .catch((error) => {
       console.log(error);
-      if (error.response.status == 401) {
-        console.log('未登入或是登入時效已到期，請重新登入');
-      }
     });
 };
