@@ -4,6 +4,7 @@ import classes from './work.module.scss';
 import gsap from 'gsap';
 import { Fragment, useEffect, useRef } from 'react';
 import { worksAnimation } from '~/animation/index';
+import Image from 'next/image';
 
 interface WorkProps {
   order: {
@@ -84,11 +85,14 @@ const WorkSection: React.FC<WorkSectionProps> = ({ worksContent }) => {
                   classes[`work-container__image${number}`]
                 }`}
               >
-                <img
+                <Image
                   src={workImage}
                   alt='icon'
                   className={classes['work-container__image-detail']}
                   ref={setImgsRef}
+                  width='520'
+                  height='520'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 />
               </div>
             </Link>
