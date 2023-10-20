@@ -1,7 +1,6 @@
 import { Fragment, Suspense, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Spinner from '../spinner/spinner';
-// import Navbar from '../navbar/navbar';
 const Navbar = dynamic(() => import('../navbar/navbar'), {
   ssr: false,
 });
@@ -15,7 +14,7 @@ function Layout(props: any) {
       <Suspense fallback={<Spinner />}>
         <Navbar />
         <main>{props.children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </Suspense>
     </Fragment>
   );
