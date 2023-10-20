@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.6...v0.1.7) (2023-10-20)
+
+
+### Bug Fixes
+
+* env and add footer ([16c58e5](https://github.com/tommy88520/portfolio-nextjs/commit/16c58e591d7003699cb96d4f6829a1e6c339a203))
+
 ### [0.1.6](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.5...v0.1.6) (2023-10-20)
 
 
