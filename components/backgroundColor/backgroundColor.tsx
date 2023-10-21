@@ -1,5 +1,6 @@
 import classes from './backgroundColor.module.scss';
-const BackgroundColor = ({ bgGradient }) => {
+const BackgroundColor = () => {
+  const bgGradient = ['1', '2', '3'];
   return (
     <div className={classes['background-gradient__contact-gradients']}>
       {bgGradient.map((g, hindex) => {

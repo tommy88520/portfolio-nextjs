@@ -86,7 +86,6 @@ const Home = ({ worksContent }) => {
     <div className={classes['home-page']} ref={ref}>
       <div className={classes['home-page__introduce-section']}>
         <Introduce />
-        <BackgroundColor bgGradient={bgGradient} />
       </div>
       <section className={classes['home-page__works-container']} ref={workContainer} id='work'>
         <div className={classes['home-page__title']}>{t('works.title')}</div>
@@ -125,7 +124,7 @@ const Home = ({ worksContent }) => {
             })}
           </div>
         </div>
-        <BackgroundColor bgGradient={bgGradient} />
+        <BackgroundColor />
       </section>
       <MobileBar />
     </div>

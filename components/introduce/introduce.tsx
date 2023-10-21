@@ -127,18 +127,19 @@ const Introduce = () => {
     }
   };
   const skills = [
-    {
-      id: 1,
-      skill: 'React',
-      image: '/images/skills/react.svg',
-    },
+    { id: 1, skill: 'MongoDB', image: '/images/skills/mongodb.svg' },
+
     { id: 2, skill: 'Docker', image: '/images/skills/docker.svg' },
     { id: 3, skill: 'GCP', image: '/images/skills/googlecloud.svg' },
     { id: 4, skill: 'JS', image: '/images/skills/javascript.svg' },
-    { id: 5, skill: 'MongoDB', image: '/images/skills/mongodb.svg' },
-    { id: 6, skill: 'NestJS', image: '/images/skills/swagger.svg' },
-    { id: 7, skill: 'Vue', image: '/images/skills/nestjs.svg' },
-    { id: 8, skill: 'Swagger', image: '/images/skills/vuedotjs.svg' },
+    {
+      id: 5,
+      skill: 'React',
+      image: '/images/skills/react.svg',
+    },
+    { id: 6, skill: 'NestJS', image: '/images/skills/nestjs.svg' },
+    { id: 7, skill: 'Vue', image: '/images/skills/vuedotjs.svg' },
+    { id: 8, skill: 'Swagger', image: '/images/skills/swagger.svg' },
   ];
 
   return (
