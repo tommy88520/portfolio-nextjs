@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.11...v0.1.12) (2023-10-21)
+
+
+### Bug Fixes
+
+* fix image rwd and bg position and skills ([35db19b](https://github.com/tommy88520/portfolio-nextjs/commit/35db19beabbeeb2aff68584a01908cf65fc3cb61))
+
 ### [0.1.11](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.10...v0.1.11) (2023-10-21)
 
 
