@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
 
       <p className={classes['footer-text']}>{footerText}</p>
-      <BackgroundColor bgGradient={bgGradient} />
+      <BackgroundColor />
     </footer>
   );
 };
