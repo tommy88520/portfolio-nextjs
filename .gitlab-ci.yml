@@ -84,7 +84,7 @@ prod_create:
   variables:
     IMAGE_ENDPOINT: ${PROD_IMAGE_ENDPOINT}
     TEMPLATE_NAME: portfolio-frontend-prod-template-${CI_COMMIT_SHORT_SHA}
-    MACHINE_TYPE: e2-micro
+    MACHINE_TYPE: e2-medium
 
 prod_deploy:
   extends: .deploy
