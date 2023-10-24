@@ -92,7 +92,6 @@ const WorkSection: React.FC<WorkSectionProps> = ({ worksContent }) => {
                   ref={setImgsRef}
                   width='520'
                   height='520'
-                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 />
               </div>
             </Link>

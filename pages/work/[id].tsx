@@ -35,7 +35,6 @@ const WorkPage = ({ workPageContent }) => {
                         width='650'
                         height='521'
                         layout='responsive'
-                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                         key={img.id}
                         loading={index > 2 ? 'lazy' : 'eager'}
                       />
