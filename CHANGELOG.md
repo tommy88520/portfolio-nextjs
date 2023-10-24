@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.14...v0.1.15) (2023-10-24)
+
+
+### Bug Fixes
+
+* fix image quality ([73504ff](https://github.com/tommy88520/portfolio-nextjs/commit/73504ff4cd2e88ce5a77920b1e5105dab2b2a1ce))
+
 ### [0.1.14](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.13...v0.1.14) (2023-10-21)
 
 ### [0.1.13](https://github.com/tommy88520/portfolio-nextjs/compare/v0.1.12...v0.1.13) (2023-10-21)
