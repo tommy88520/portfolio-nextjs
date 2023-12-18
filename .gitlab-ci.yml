@@ -1,7 +1,7 @@
 variables:
   PROJECT_NAME: portfolio-front
   DOCKER_REGISTRY_URL: asia-east1-docker.pkg.dev
-  NIC0_SUBNET: portfolio-front
+  NIC0_SUBNET: portfolio
   PROD_IMAGE_ENDPOINT: $PROJECT_ID/portfolio/frontend-prod
   PREVIOUS_COMMIT: ''
 
@@ -18,7 +18,7 @@ stages:
     - gcloud --version
     - gcloud auth activate-service-account --key-file ./config/key/portfolio-js-123-08cc5e335d93.json
     - gcloud config set project $PROJECT_ID
-    - gcloud config set compute/region asia-east2
+    - gcloud config set compute/region asia-east1
     - gcloud config set disable_prompts true
 
 .create:
@@ -44,7 +44,7 @@ stages:
   extends: .base_gcloud_job
   stage: deploy
   script:
-    - gcloud compute instance-groups managed rolling-action start-update ${INSTANCES_GROUP_NAME} --version=template=${TEMPLATE_NAME} --max-surge=3 --max-unavailable=0 --zone=asia-east2-c
+    - gcloud compute instance-groups managed rolling-action start-update ${INSTANCES_GROUP_NAME} --version=template=${TEMPLATE_NAME} --max-surge=3 --max-unavailable=0 --zone=asia-east1-c
     - >
       gcloud container images add-tag
       ${DOCKER_REGISTRY_URL}/${IMAGE_ENDPOINT}:${PREVIOUS_COMMIT}

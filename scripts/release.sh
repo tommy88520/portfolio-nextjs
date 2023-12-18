@@ -7,7 +7,7 @@ git checkout master
 git pull upstream master
 yarn standard-version
 COMMIT_SHA=$(git rev-parse HEAD)
-IMAGE_TAG=asia-east1-docker.pkg.dev/portfolio-js-123/portfolio/frontend-prod:$COMMIT_SHA
+IMAGE_TAG=asia-east1-docker.pkg.dev/portfolio-js-124/portfolio/frontend-prod:$COMMIT_SHA
 docker build --platform linux/amd64 -t $IMAGE_TAG --build-arg ENV=prod .
 docker push $IMAGE_TAG
 docker rmi $IMAGE_TAG
